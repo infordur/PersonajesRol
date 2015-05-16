@@ -27,6 +27,7 @@ import java.awt.TextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Toolkit;
 /**
  * Ventana en la que se realiza la acción del programa.
  * @author Pablo
@@ -68,9 +69,9 @@ public class JugarPartida extends JDialog {
 	 * Create the dialog.
 	 * 
 	 * @param personaje
-	 * @param taberna
 	 */
 	public JugarPartida(final Personaje personaje) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\imagenes\\logoJuego.png"));
 		setTitle("Luchar");
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -249,7 +250,7 @@ public class JugarPartida extends JDialog {
 		lbNombrePj = new JLabel("");
 		lbNombrePj.setForeground(new Color(255, 255, 255));
 		lbNombrePj.setFont(new Font("AvQest", Font.BOLD, 18));
-		lbNombrePj.setBounds(150, 11, 157, 14);
+		lbNombrePj.setBounds(150, 11, 252, 14);
 		contentPanel.add(lbNombrePj);
 
 		lbMonstruo = new JLabel("");
@@ -290,6 +291,9 @@ public class JugarPartida extends JDialog {
 			if(personaje.getNivel()==20){
 				JOptionPane.showMessageDialog(contentPanel, "Felicidades. Has llegado a nivel máximo",
 						"Felicidades", JOptionPane.INFORMATION_MESSAGE);
+				listaPersonajes listapersonajes=new listaPersonajes(Gestion.taberna);
+				dispose();
+				listapersonajes.setVisible(true);
 			}
 		}
 	}

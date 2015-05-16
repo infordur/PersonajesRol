@@ -18,6 +18,7 @@ public class VerAyuda extends JDialog {
 	 * Create the dialog.
 	 */
 	public VerAyuda() {
+		setResizable(false);
 		setTitle("Ver Ayuda");
 		setBounds(100, 100, 754, 462);
 

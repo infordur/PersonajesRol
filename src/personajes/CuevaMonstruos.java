@@ -38,7 +38,7 @@ public class CuevaMonstruos {
 	
 	/**
 	 * Saca un monstruo aleatorio de la lista de monstruos
-	 * @return
+	 * @return Monstruo aleatorio
 	 */
 	public Monstruo generarMonstruoAleatorio(){
 		cueva=generarMonstruos();

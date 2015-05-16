@@ -74,6 +74,7 @@ public class listaPersonajes extends VentanaPadre {
 	 */
 	public listaPersonajes(final Taberna taberna) {
 		super();
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\imagenes\\logoJuego.png"));
 		setResizable(false);
 		setModal(true);
 		setTitle("Taberna");
@@ -151,7 +152,7 @@ public class listaPersonajes extends VentanaPadre {
 				}
 			}
 		});
-		listPjs.setBounds(43, 26, 169, 183);
+		listPjs.setBounds(43, 26, 198, 183);
 		rellenarLista();
 
 		btnAtras = new JButton("<");
@@ -162,7 +163,7 @@ public class listaPersonajes extends VentanaPadre {
 				comprobarBoton(); //Desactiva el botón si no hay más personajes
 			}
 		});
-		btnAtras.setBounds(43, 174, 81, 35);
+		btnAtras.setBounds(43, 174, 91, 35);
 		contentPanel.add(btnAtras);
 
 		btnSiguiente = new JButton(">");
@@ -173,7 +174,7 @@ public class listaPersonajes extends VentanaPadre {
 				comprobarBoton(); //Desactiva el botón si no hay más personajes
 			}
 		});
-		btnSiguiente.setBounds(134, 174, 81, 35);
+		btnSiguiente.setBounds(144, 174, 97, 35);
 		contentPanel.add(btnSiguiente);
 		listPjs.setModel(modelo);
 		contentPanel.add(listPjs);
@@ -223,12 +224,12 @@ public class listaPersonajes extends VentanaPadre {
 		lbIcono.setBounds(21, 11, 133, 115);
 		panel.add(lbIcono);
 		
-		JLabel lblEstado = new JLabel("Estado");
+		JLabel lblEstado = new JLabel("Estado:");
 		lblEstado.setBounds(180, 23, 54, 14);
 		panel.add(lblEstado);
 		
 		lbEstado = new JLabel("");
-		lbEstado.setBounds(244, 23, 98, 14);
+		lbEstado.setBounds(228, 23, 98, 14);
 		panel.add(lbEstado);
 
 		btnJugar = new JButton("JUGAR");
@@ -243,7 +244,7 @@ public class listaPersonajes extends VentanaPadre {
 				}
 			}
 		});
-		btnJugar.setBounds(43, 210, 172, 35);
+		btnJugar.setBounds(43, 210, 198, 35);
 		contentPanel.add(btnJugar);
 
 		comprobarBtJugar(taberna); // comprueba que haya personajes en la
@@ -332,6 +333,7 @@ public class listaPersonajes extends VentanaPadre {
 
 		if(personaje.isMuerto()==true){
 			lbEstado.setText("Muerto");
+			lbEstado.setForeground(Color.RED);
 		}
 		else{
 			lbEstado.setText("Vivo");
@@ -363,6 +365,10 @@ public class listaPersonajes extends VentanaPadre {
 	 * @throws LosMuertosNoLuchanException
 	 */
 	private void jugar() throws LosMuertosNoLuchanException {
+		if(taberna.get(listPjs.getSelectedIndex()).getNivel()==20){
+			JOptionPane.showMessageDialog(contentPanel, "Tu personaje ya está a nivel máximo");
+			return;
+		}
 		if (taberna.get(listPjs.getSelectedIndex()).isMuerto() == false) {
 			jugarPartida = new JugarPartida(taberna.get(listPjs
 					.getSelectedIndex()));

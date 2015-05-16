@@ -22,6 +22,7 @@ import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
+import java.awt.Toolkit;
 /**
  * Ventana padre que contiene el diseño para la creación de personaje.
  * @author Pablo
@@ -54,6 +55,7 @@ public class VentanaPadre extends JDialog {
 	 * Create the dialog.
 	 */
 	public VentanaPadre() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\imagenes\\logoJuego.png"));
 		setBounds(100, 100, 567, 389);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

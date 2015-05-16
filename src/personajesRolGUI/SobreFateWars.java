@@ -19,6 +19,7 @@ public class SobreFateWars extends JDialog {
 	 * Create the dialog.
 	 */
 	public SobreFateWars() {
+		setResizable(false);
 		setTitle("Sobre FateWars");
 		setBounds(100, 100, 199, 124);
 		getContentPane().setLayout(null);

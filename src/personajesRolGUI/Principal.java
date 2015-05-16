@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Toolkit;
 /**
  * Ventana principal que ejecuta el programa
  * @author Pablo Durán
@@ -39,7 +40,9 @@ public class Principal {
 	private listaPersonajes miTaberna;
 	private JFileChooser guardarComoFile;
 	private Filtro filtro = new Filtro(".rol", "Archivo de rol");
-	private VerAyuda verAyuda;
+	private VerAyuda verAyuda= new VerAyuda();
+	private Instrucciones instrucciones =  new Instrucciones();
+	private SobreFateWars sobreFateWars = new SobreFateWars();
 
 	/**
 	 * Launch the application.
@@ -69,6 +72,7 @@ public class Principal {
 	 */
 	private void initialize() {
 		frmSintitulo = new JFrame();
+		frmSintitulo.setIconImage(Toolkit.getDefaultToolkit().getImage("src\\imagenes\\logoJuego.png"));
 		frmSintitulo.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -99,7 +103,7 @@ public class Principal {
 		JMenuItem mntmAbrir = new JMenuItem("Abrir");
 		mntmAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				abrir();
+				abrirFichero();
 			}
 		});
 		mnArchivo.add(mntmAbrir);
@@ -237,24 +241,24 @@ public class Principal {
 	 * Crea la ventana VerAyuda
 	 */
 	private void verAyuda(){
-		verAyuda= new VerAyuda();
-		verAyuda.setVisible(true);	
+		verAyuda.setVisible(true);
+		verAyuda.toFront();
 	}
 	
 	/**
 	 * Crea la ventana instrucciones
 	 */
 	private void instrucciones() {
-		Instrucciones instrucciones = new Instrucciones();
 		instrucciones.setVisible(true);
+		instrucciones.toFront();
 	}
 	
 	/**
 	 * Crea la ventana SobreFateWars
 	 */
 	private void sobreFateWars() {
-		SobreFateWars sobreFateWars = new SobreFateWars();
 		sobreFateWars.setVisible(true);
+		sobreFateWars.toFront();
 	}
 	
 	/**
@@ -269,10 +273,10 @@ public class Principal {
 			case JOptionPane.YES_OPTION:
 				guardar();
 				abrir();
-				break;
+				return;
 			case JOptionPane.NO_OPTION:
 				abrir();
-				break;
+				return;
 			case JOptionPane.CANCEL_OPTION:
 				return;
 			}

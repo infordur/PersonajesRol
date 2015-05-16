@@ -13,6 +13,7 @@ public class Instrucciones extends JDialog {
 	 * Create the dialog.
 	 */
 	public Instrucciones() {
+		setResizable(false);
 		setTitle("Instrucciones");
 		setBounds(100, 100, 450, 300);
 		

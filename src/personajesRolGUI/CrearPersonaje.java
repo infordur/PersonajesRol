@@ -75,7 +75,7 @@ public class CrearPersonaje extends VentanaPadre {
 	
 	/**
 	 * Devuelve un atributo en función del radioButton seleccionado
-	 * @return
+	 * @return Atributo del personaje elegido
 	 */
 	private Atributos getAtributo(){
 		if(radioGuerrero.isSelected()){
