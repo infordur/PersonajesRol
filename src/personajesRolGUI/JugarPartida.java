@@ -58,7 +58,6 @@ public class JugarPartida extends JDialog {
 	private JLabel lbEdad;
 	private JLabel lbIcon;
 	private JLabel lbMonstruo;
-	CuevaMonstruos cueva = new CuevaMonstruos();
 	private JLabel lblEstado;
 	private JLabel lbEstado;
 	private JLabel lbMonstruoImagen;
@@ -94,7 +93,7 @@ public class JugarPartida extends JDialog {
 
 		lbMonstruoImagen = new JLabel("");
 		lbMonstruoImagen.setHorizontalAlignment(SwingConstants.CENTER);
-		lbMonstruoImagen.setBounds(513, 26, 242, 204);
+		lbMonstruoImagen.setBounds(513, 26, 302, 204);
 		contentPanel.add(lbMonstruoImagen);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -220,7 +219,7 @@ public class JugarPartida extends JDialog {
 			private void buscarMonstruo(final Personaje personaje)
 					throws LosMuertosNoLuchanException {
 				if (personaje.isMuerto() != true) {
-					Monstruo monstruo = cueva.generarMonstruoAleatorio();
+					Monstruo monstruo = Gestion.cueva.generarMonstruoAleatorio();
 					lbMonstruoImagen.setIcon(new ImageIcon(monstruo.getImagen()));
 					pelea(personaje, monstruo);
 				}
@@ -254,6 +253,7 @@ public class JugarPartida extends JDialog {
 		contentPanel.add(lbNombrePj);
 
 		lbMonstruo = new JLabel("");
+		lbMonstruo.setHorizontalAlignment(SwingConstants.CENTER);
 		lbMonstruo.setForeground(new Color(255, 255, 255));
 		lbMonstruo.setFont(new Font("AvQest", Font.BOLD, 18));
 		lbMonstruo.setBounds(513, 11, 302, 14);
@@ -279,7 +279,7 @@ public class JugarPartida extends JDialog {
 				&& personaje.isMuerto() != true) {
 			personaje.bajarNivel();
 			datosPersonaje(personaje);
-		} else if (personaje.getNivel() >= cueva.getNivelMonstruo(monstruo)
+		} else if (personaje.getNivel() >= Gestion.cueva.getNivelMonstruo(monstruo)
 				&& personaje.isMuerto() != true && personaje.getNivel()<20) {
 			try {
 				personaje.subirNivel();

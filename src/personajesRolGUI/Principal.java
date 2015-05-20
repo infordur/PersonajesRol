@@ -16,6 +16,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import personajes.CuevaMonstruos;
+import personajes.Monstruo;
 import personajes.Taberna;
 import utiles.Gestion;
 import utiles.Filtro;
@@ -25,9 +27,13 @@ import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Toolkit;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 /**
  * Ventana principal que ejecuta el programa
  * @author Pablo Durán
@@ -72,6 +78,7 @@ public class Principal {
 	 */
 	private void initialize() {
 		frmSintitulo = new JFrame();
+		frmSintitulo.setResizable(false);
 		frmSintitulo.setIconImage(Toolkit.getDefaultToolkit().getImage("src\\imagenes\\logoJuego.png"));
 		frmSintitulo.addWindowListener(new WindowAdapter() {
 			@Override
@@ -83,16 +90,18 @@ public class Principal {
 
 		});
 		frmSintitulo.setTitle("FateWars - Sin_titulo");
-		frmSintitulo.setBounds(100, 100, 568, 405);
+		frmSintitulo.setBounds(100, 100, 554, 396);
 		frmSintitulo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JMenuBar menuBar = new JMenuBar();
 		frmSintitulo.setJMenuBar(menuBar);
 
 		JMenu mnArchivo = new JMenu("Archivo");
+		mnArchivo.setMnemonic('a');
 		menuBar.add(mnArchivo);
 
 		JMenuItem mntmNuevo = new JMenuItem("Nuevo");
+		mntmNuevo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mntmNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nuevoArchivo();
@@ -101,6 +110,7 @@ public class Principal {
 		mnArchivo.add(mntmNuevo);
 
 		JMenuItem mntmAbrir = new JMenuItem("Abrir");
+		mntmAbrir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 		mntmAbrir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				abrirFichero();
@@ -109,6 +119,7 @@ public class Principal {
 		mnArchivo.add(mntmAbrir);
 
 		JMenuItem mntmGuardar = new JMenuItem("Guardar");
+		mntmGuardar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.CTRL_MASK));
 		mntmGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				guardar();
@@ -118,6 +129,7 @@ public class Principal {
 		mnArchivo.add(mntmGuardar);
 
 		JMenuItem mntmGuardarComo = new JMenuItem("Guardar Como");
+		mntmGuardarComo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		mntmGuardarComo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				guardarComo();
@@ -126,6 +138,7 @@ public class Principal {
 		mnArchivo.add(mntmGuardarComo);
 
 		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
 		mntmSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cerrarVentana();
@@ -135,9 +148,11 @@ public class Principal {
 		mnArchivo.add(mntmSalir);
 		
 		JMenu mnAyuda = new JMenu("Ayuda");
+		mnAyuda.setMnemonic('y');
 		menuBar.add(mnAyuda);
 		
 		JMenuItem mntmVerAyuda = new JMenuItem("ver Ayuda");
+		mntmVerAyuda.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 		mntmVerAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verAyuda();
@@ -146,6 +161,7 @@ public class Principal {
 		mnAyuda.add(mntmVerAyuda);
 		
 		JMenuItem mntmInstrucciones = new JMenuItem("Instrucciones");
+		mntmInstrucciones.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
 		mntmInstrucciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				instrucciones();
@@ -154,6 +170,7 @@ public class Principal {
 		mnAyuda.add(mntmInstrucciones);
 		
 		JMenuItem mntmSobre = new JMenuItem("sobre FateWars");
+		mntmSobre.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
 		mntmSobre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sobreFateWars();
@@ -184,8 +201,23 @@ public class Principal {
 		});
 		btnListaPersonajes.setBounds(204, 239, 139, 23);
 		frmSintitulo.getContentPane().add(btnListaPersonajes);
+				
+				JButton btnBestiario = new JButton("Bestiario");
+				btnBestiario.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						bestiario();
+					}
+				});
+				btnBestiario.setBounds(204, 271, 139, 23);
+				frmSintitulo.getContentPane().add(btnBestiario);
+				
+				JLabel lblNewLabel_1 = new JLabel("");
+				lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel_1.setIcon(new ImageIcon("src\\imagenes\\FateWars.png"));
+				lblNewLabel_1.setBounds(10, 11, 542, 251);
+				frmSintitulo.getContentPane().add(lblNewLabel_1);
 		
-				JLabel lblNewLabel = new JLabel("imagen");
+				JLabel lblNewLabel = new JLabel("");
 				lblNewLabel.setBounds(0, -11, 552, 367);
 				lblNewLabel.setIcon(new ImageIcon("src\\imagenes\\portada"));
 				frmSintitulo.getContentPane().add(lblNewLabel);
@@ -262,6 +294,13 @@ public class Principal {
 	}
 	
 	/**
+	 * Crea la ventana Bestiario
+	 */
+	private void bestiario(){
+		Bestiario bestiario= new Bestiario(Gestion.cueva);
+		bestiario.setVisible(true);
+	}
+	/**
 	 * Implementa la función de abrir un archivo
 	 */
 	private void abrirFichero() {
@@ -289,8 +328,8 @@ public class Principal {
 	 */
 	protected void abrir() {
 		JFileChooser abrir = new JFileChooser();
-		abrir.addChoosableFileFilter(filtro);
 		abrir.setAcceptAllFileFilterUsed(false);
+		abrir.addChoosableFileFilter(filtro);
 		if (abrir.showDialog(abrir, "Abrir Archivo") == abrir.APPROVE_OPTION) {
 			try {
 				Gestion.archivo = abrir.getSelectedFile();
@@ -312,8 +351,8 @@ public class Principal {
 	 */
 	private void guardarComo() {
 		guardarComoFile = new JFileChooser();
-		guardarComoFile.addChoosableFileFilter(filtro);
 		guardarComoFile.setAcceptAllFileFilterUsed(false);
+		guardarComoFile.addChoosableFileFilter(filtro);
 		if (guardarComoFile.APPROVE_OPTION == guardarComoFile.showDialog(
 				guardarComoFile, "Guardar Archivo")) {
 			try {

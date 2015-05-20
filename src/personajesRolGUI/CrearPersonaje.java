@@ -21,6 +21,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  * Ventana para la creación de un personaje
  * @author Pablo Durán
@@ -35,30 +38,32 @@ public class CrearPersonaje extends VentanaPadre {
 	 */
 	public CrearPersonaje(final Taberna taberna) {
 		super();
+		radioArquero.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				lbImagen.setIcon(new ImageIcon("src\\imagenes\\arquera.jpg"));
+			}
+		});
+		radioMago.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				lbImagen.setIcon(new ImageIcon("src\\imagenes\\mago.jpg"));
+			}
+		});
+		radioGuerrero.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				lbImagen.setIcon(new ImageIcon("src\\imagenes\\guerrero.jpg"));
+			}
+		});
 		setResizable(false);
 		setTitle("Crear Personaje");
 		radioGuerrero.setSelected(true);
 		lbImagen.setIcon(new ImageIcon("src\\imagenes\\guerrero.jpg"));
 		tfNombre.setColumns(25);
+					
+		
 		setModal(true);
-		radioArquero.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				lbImagen.setIcon(new ImageIcon("src\\imagenes\\arquera.jpg"));
-			}
-		});
-		radioMago.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				lbImagen.setIcon(new ImageIcon("src\\imagenes\\mago.jpg"));
-			}
-		});
-		radioGuerrero.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent arg0) {
-				lbImagen.setIcon(new ImageIcon("src\\imagenes\\guerrero.jpg"));
-			}
-		});
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -106,5 +111,4 @@ public class CrearPersonaje extends VentanaPadre {
 			lbImagen.setIcon(new ImageIcon("src\\imagenes\\arquero.png"));
 		}
 	}
-
 }

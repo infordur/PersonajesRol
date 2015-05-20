@@ -14,11 +14,15 @@ public class CuevaMonstruos {
 	 */
 	ArrayList<Monstruo> cueva= new ArrayList<Monstruo>();
 	
+	public CuevaMonstruos() {
+		generarMonstruos();
+	}
+
 	/**
 	 * Añade unos cuantos monstruos a la lista
 	 * @return lista de monstruos rellena
 	 */
-	private ArrayList generarMonstruos(){
+	public void generarMonstruos(){
 		cueva.add(new Monstruo("Goblin", (int)(Math.random()*2+1),  "src\\imagenes\\goblin.jpg"));
 		cueva.add(new Monstruo("Golem", (int)(Math.random()*4+1),"src\\imagenes\\Golem.jpg"));
 		cueva.add(new Monstruo("Ranquirana", 1,"src\\imagenes\\ranquiran.jpg"));
@@ -33,7 +37,6 @@ public class CuevaMonstruos {
 		cueva.add(new Monstruo("Ciempiés", 1,"src\\imagenes\\ciempies.jpg"));
 		cueva.add(new Monstruo("Esqueleto Arquero", (int)(Math.random()*12+5),"src\\imagenes\\esqueleto_arquero.jpg"));
 		cueva.add(new Monstruo("Slime", 1,"src\\imagenes\\slime.jpg"));
-		return cueva;
 	}
 	
 	/**
@@ -41,7 +44,6 @@ public class CuevaMonstruos {
 	 * @return Monstruo aleatorio
 	 */
 	public Monstruo generarMonstruoAleatorio(){
-		cueva=generarMonstruos();
 		return cueva.get((int)(Math.random()*cueva.size()));
 	}
 		
@@ -52,6 +54,29 @@ public class CuevaMonstruos {
 	 */
 	public int getNivelMonstruo(Monstruo monstruo){
 		return monstruo.getNivel();
+	}
+	
+	/**
+	 * Devuelve un monstruo por índice
+	 * @param i Posición del monstruo en el ArrayList
+	 * @return monstruo
+	 */
+	public Monstruo get(int i) {
+		if (cueva.isEmpty()) {
+			return null;
+		} else if (i < 0 || i > cueva.size() - 1) {
+			return null;
+		} else {
+			return cueva.get(i);
+		}
+	}
+
+	/**
+	 * Devuelve el tamaño del ArrayList
+	 * @return entero que representa el tamaño del ArrayList
+	 */
+	public int size() {
+		return cueva.size();
 	}
 	
 }

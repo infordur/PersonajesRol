@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 /**
  * Ventana padre que contiene el diseño para la creación de personaje.
  * @author Pablo
@@ -50,6 +51,7 @@ public class VentanaPadre extends JDialog {
 	protected JPanel buttonPane;
 	protected JButton okButton;
 	protected JButton cancelButton;
+	protected JLabel lbFondoMadera;
 
 	/**
 	 * Create the dialog.
@@ -72,30 +74,40 @@ public class VentanaPadre extends JDialog {
 		tfNombre.setColumns(10);
 		
 		lbNombre = new JLabel("Nombre");
+		lbNombre.setForeground(Color.WHITE);
 		lbNombre.setBounds(290, 11, 146, 20);
 		contentPanel.add(lbNombre);
 		
 		lbEdad = new JLabel("Edad");
+		lbEdad.setForeground(Color.WHITE);
 		lbEdad.setBounds(290, 43, 81, 20);
 		contentPanel.add(lbEdad);
 		
 		panel = new JPanel();
-		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Clase", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setOpaque(false);
+		panel.setForeground(Color.WHITE);
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Clase", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		panel.setBounds(290, 72, 169, 98);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
 		radioGuerrero = new JRadioButton("Guerrero");
+		radioGuerrero.setOpaque(false);
+		radioGuerrero.setForeground(Color.WHITE);
 		radioGuerrero.setBounds(16, 16, 109, 23);
 		panel.add(radioGuerrero);
 		buttonGroup.add(radioGuerrero);
 		
 		radioMago = new JRadioButton("Mago");
+		radioMago.setOpaque(false);
+		radioMago.setForeground(Color.WHITE);
 		radioMago.setBounds(16, 42, 109, 23);
 		panel.add(radioMago);
 		buttonGroup.add(radioMago);
 		
 		radioArquero = new JRadioButton("Arquero");
+		radioArquero.setOpaque(false);
+		radioArquero.setForeground(Color.WHITE);
 		radioArquero.setBounds(16, 68, 109, 23);
 		panel.add(radioArquero);
 		buttonGroup.add(radioArquero);
@@ -110,10 +122,17 @@ public class VentanaPadre extends JDialog {
 		contentPanel.add(spEdad);
 		
 		lblDescripcin = new JLabel("Descripci\u00F3n");
+		lblDescripcin.setForeground(Color.WHITE);
 		lblDescripcin.setBounds(290, 176, 91, 20);
 		contentPanel.add(lblDescripcin);
+		
+		lbFondoMadera = new JLabel("New label");
+		lbFondoMadera.setIcon(new ImageIcon("src\\imagenes\\madera.jpg"));
+		lbFondoMadera.setBounds(0, 0, 563, 353);
+		contentPanel.add(lbFondoMadera);
 		{
 			buttonPane = new JPanel();
+			buttonPane.setBackground(Color.DARK_GRAY);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

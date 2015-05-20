@@ -9,10 +9,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.regex.Pattern;
 
+import personajes.CuevaMonstruos;
 import personajes.Taberna;
 
 public class Gestion {
 
+	/**
+ 	* Creación de la cueva de monstruos 
+ 	*/
+	public static CuevaMonstruos cueva = new CuevaMonstruos();
 	/**
 	 * Creación de la taberna
 	 */
@@ -36,6 +41,7 @@ public class Gestion {
 		return archivo;
 	}
 
+	
 	/**
 	 * Setter de archivo
 	 * @param archivo

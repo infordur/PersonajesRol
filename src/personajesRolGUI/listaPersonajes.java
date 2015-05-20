@@ -66,6 +66,7 @@ public class listaPersonajes extends VentanaPadre {
 	private JButton btnAtras;
 	private JButton btnSiguiente;
 	private JLabel lbEstado;
+	private JLabel lbFondoTaberna;
 
 	/**
 	 * Create the dialog.
@@ -74,6 +75,18 @@ public class listaPersonajes extends VentanaPadre {
 	 */
 	public listaPersonajes(final Taberna taberna) {
 		super();
+		lbFondoMadera.setVisible(false);
+		radioArquero.setForeground(new Color(255, 255, 255));
+		radioMago.setForeground(new Color(255, 255, 255));
+		radioGuerrero.setForeground(new Color(255, 255, 255));
+		radioArquero.setOpaque(false);
+		radioMago.setOpaque(false);
+		radioGuerrero.setOpaque(false);
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Clase", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 255, 255)));
+		panel.setOpaque(false);
+		lblDescripcin.setForeground(new Color(255, 255, 255));
+		lbEdad.setForeground(new Color(255, 255, 255));
+		lbNombre.setForeground(new Color(255, 255, 255));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\imagenes\\logoJuego.png"));
 		setResizable(false);
 		setModal(true);
@@ -89,7 +102,7 @@ public class listaPersonajes extends VentanaPadre {
 		lbNombre.setBounds(502, 26, 146, 20);
 		tfNombre.setBounds(555, 26, 198, 20);
 		lbImagen.setBounds(278, 26, 169, 219);
-
+		
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				eliminarPersonaje(taberna);
@@ -180,43 +193,49 @@ public class listaPersonajes extends VentanaPadre {
 		contentPanel.add(listPjs);
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(UIManager
-				.getBorder("TitledBorder.border"), "Estadisticas",
-				TitledBorder.LEADING, TitledBorder.TOP, null,
-				new Color(0, 0, 0)));
+		panel.setOpaque(false);
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Estadisticas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 255, 255)));
 		panel.setBounds(35, 252, 444, 131);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblAtrib = new JLabel("Atrib:");
+		lblAtrib.setForeground(new Color(255, 255, 255));
 		lblAtrib.setBounds(180, 48, 46, 14);
 		panel.add(lblAtrib);
 
 		lbAtrib = new JLabel("");
+		lbAtrib.setForeground(new Color(255, 255, 255));
 		lbAtrib.setBounds(215, 48, 98, 14);
 		panel.add(lbAtrib);
 
 		JLabel lblVida = new JLabel("Vida:");
+		lblVida.setForeground(new Color(255, 255, 255));
 		lblVida.setBounds(180, 73, 46, 14);
 		panel.add(lblVida);
 
 		lbVida = new JLabel("");
+		lbVida.setForeground(new Color(255, 255, 255));
 		lbVida.setBounds(215, 73, 46, 14);
 		panel.add(lbVida);
 
 		JLabel lblDao = new JLabel("Da\u00F1o:");
+		lblDao.setForeground(new Color(255, 255, 255));
 		lblDao.setBounds(323, 48, 46, 14);
 		panel.add(lblDao);
 
 		JLabel lblArmadura = new JLabel("Armadura:");
+		lblArmadura.setForeground(new Color(255, 255, 255));
 		lblArmadura.setBounds(323, 73, 68, 14);
 		panel.add(lblArmadura);
 
 		lbDanno = new JLabel("");
+		lbDanno.setForeground(new Color(255, 255, 255));
 		lbDanno.setBounds(360, 48, 46, 14);
 		panel.add(lbDanno);
 
 		lbArmadura = new JLabel("");
+		lbArmadura.setForeground(new Color(255, 255, 255));
 		lbArmadura.setBounds(390, 73, 54, 14);
 		panel.add(lbArmadura);
 
@@ -225,10 +244,12 @@ public class listaPersonajes extends VentanaPadre {
 		panel.add(lbIcono);
 		
 		JLabel lblEstado = new JLabel("Estado:");
+		lblEstado.setForeground(new Color(255, 255, 255));
 		lblEstado.setBounds(180, 23, 54, 14);
 		panel.add(lblEstado);
 		
 		lbEstado = new JLabel("");
+		lbEstado.setForeground(new Color(255, 255, 255));
 		lbEstado.setBounds(228, 23, 98, 14);
 		panel.add(lbEstado);
 
@@ -251,15 +272,21 @@ public class listaPersonajes extends VentanaPadre {
 									// taberna para poder jugar.
 
 		JLabel lblFechaCreacion = new JLabel("Fecha Creaci\u00F3n");
+		lblFechaCreacion.setForeground(new Color(255, 255, 255));
 		lblFechaCreacion.setBounds(502, 97, 102, 14);
 		contentPanel.add(lblFechaCreacion);
 
 		lbFechaCreacion = new JLabel("");
+		lbFechaCreacion.setForeground(new Color(255, 255, 255));
 		lbFechaCreacion.setBounds(600, 97, 153, 14);
 		contentPanel.add(lbFechaCreacion);
+		
+		lbFondoTaberna = new JLabel("");
+		lbFondoTaberna.setIcon(new ImageIcon("src\\imagenes\\madera2.jpg"));
+		lbFondoTaberna.setBounds(0, 1, 774, 432);
+		contentPanel.add(lbFondoTaberna);
 
 		cargarPrimerPersonaje(taberna);
-		//personaje = taberna.get(0).getNombre();
 	}
 
 	/**
@@ -337,6 +364,7 @@ public class listaPersonajes extends VentanaPadre {
 		}
 		else{
 			lbEstado.setText("Vivo");
+			lbEstado.setForeground(Color.WHITE);
 		}
 		switch (personaje.getAtributo()) {
 		case FUERZA:
