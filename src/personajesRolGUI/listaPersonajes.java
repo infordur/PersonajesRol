@@ -1,6 +1,7 @@
 package personajesRolGUI;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
@@ -11,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import personajes.Personaje;
@@ -53,7 +55,7 @@ public class listaPersonajes extends VentanaPadre {
 	private DefaultListModel modelo = new DefaultListModel();
 	private String personaje;
 	private Taberna taberna;
-	private JList listPjs;
+	private JList listPjs =new JList(); 
 	private JLabel lbDanno;
 	private JLabel lbArmadura;
 	private JLabel lbVida;
@@ -63,8 +65,6 @@ public class listaPersonajes extends VentanaPadre {
 	private JButton btnJugar;
 	private JLabel lbFechaCreacion;
 	private int indicePersonajes = 0;
-	private JButton btnAtras;
-	private JButton btnSiguiente;
 	private JLabel lbEstado;
 	private JLabel lbFondoTaberna;
 
@@ -75,6 +75,7 @@ public class listaPersonajes extends VentanaPadre {
 	 */
 	public listaPersonajes(final Taberna taberna) {
 		super();
+		lbFondoMadera.setText("");
 		lbFondoMadera.setVisible(false);
 		radioArquero.setForeground(new Color(255, 255, 255));
 		radioMago.setForeground(new Color(255, 255, 255));
@@ -149,48 +150,7 @@ public class listaPersonajes extends VentanaPadre {
 		radioMago.setEnabled(false);
 		radioGuerrero.setEnabled(false);
 		contentPanel.setLayout(null);
-
-		listPjs = new JList();
-		listPjs.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null,
-				null, null));
-		listPjs.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				if (taberna.size() > 0) {
-					personaje = taberna.get(listPjs.getSelectedIndex())
-							.getNombre();
-					datosPersonaje(taberna.get(listPjs.getSelectedIndex()));
-					indicePersonajes = listPjs.getSelectedIndex();
-					comprobarBoton();
-				}
-			}
-		});
-		listPjs.setBounds(43, 26, 198, 183);
 		rellenarLista();
-
-		btnAtras = new JButton("<");
-		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				datosPersonaje(taberna.get(--indicePersonajes)); //Avanza al personaje anterior
-				listPjs.setSelectedIndex(indicePersonajes); //Selecciona el personaje actual
-				comprobarBoton(); //Desactiva el botón si no hay más personajes
-			}
-		});
-		btnAtras.setBounds(43, 174, 91, 35);
-		contentPanel.add(btnAtras);
-
-		btnSiguiente = new JButton(">");
-		btnSiguiente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				datosPersonaje(taberna.get(++indicePersonajes)); //Avanza al siguiente personaje
-				listPjs.setSelectedIndex(indicePersonajes); //Selecciona el personaje actual
-				comprobarBoton(); //Desactiva el botón si no hay más personajes
-			}
-		});
-		btnSiguiente.setBounds(144, 174, 97, 35);
-		contentPanel.add(btnSiguiente);
-		listPjs.setModel(modelo);
-		contentPanel.add(listPjs);
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -265,6 +225,29 @@ public class listaPersonajes extends VentanaPadre {
 				}
 			}
 		});
+		
+				listPjs.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null,
+						null, null));
+				listPjs.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						if (taberna.size() > 0) {
+							personaje = taberna.get(listPjs.getSelectedIndex())
+									.getNombre();
+							datosPersonaje(taberna.get(listPjs.getSelectedIndex()));
+							indicePersonajes = listPjs.getSelectedIndex();
+							comprobarBoton();
+						}
+					}
+				});
+				listPjs.setBounds(43, 26, 198, 149);
+				listPjs.setModel(modelo);
+				JScrollPane scroll = new JScrollPane(listPjs);
+				scroll.setLocation(43, 11);
+				scroll.setSize(198, 198);
+				scroll.setPreferredSize(new Dimension(200,300));
+				contentPanel.add(scroll, BorderLayout.CENTER);
+//				contentPanel.add(listPjs);
 		btnJugar.setBounds(43, 210, 198, 35);
 		contentPanel.add(btnJugar);
 
@@ -408,20 +391,10 @@ public class listaPersonajes extends VentanaPadre {
 	}
 
 	/**
-	 * Comprueba los botones de alante, atras y borrar.
+	 * Comprueba el botón eliminar.
 	 * Los desactiva si no hay más personajes y los activa en caso contrario.
 	 */
 	private void comprobarBoton() {
-		if (taberna.get(indicePersonajes - 1) == null) {
-			btnAtras.setEnabled(false);
-		} else {
-			btnAtras.setEnabled(true);
-		}
-		if (taberna.get(indicePersonajes + 1) == null) {
-			btnSiguiente.setEnabled(false);
-		} else {
-			btnSiguiente.setEnabled(true);
-		}
 		if (taberna.get(indicePersonajes) == null) {
 			okButton.setEnabled(false);
 		} else {

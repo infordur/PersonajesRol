@@ -201,7 +201,8 @@ public class JugarPartida extends JDialog {
 		lbIcon.setBounds(31, 11, 133, 115);
 		panel_1.add(lbIcon);
 
-		JButton okButton = new JButton("Buscar Monstruos");
+		JButton okButton = new JButton("<html><body><center>Buscar</center>\r\nMonstruos</body></html>");
+		okButton.setFont(new Font("AvQest", Font.PLAIN, 18));
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -228,12 +229,13 @@ public class JugarPartida extends JDialog {
 				}
 			}
 		});
-		okButton.setBounds(692, 253, 123, 61);
+		okButton.setBounds(692, 258, 123, 61);
 		contentPanel.add(okButton);
 		okButton.setActionCommand("OK");
 		getRootPane().setDefaultButton(okButton);
 
 		JButton cancelButton = new JButton("Salir");
+		cancelButton.setFont(new Font("AvQest", Font.PLAIN, 18));
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				listaPersonajes listapersonajes=new listaPersonajes(Gestion.taberna);
@@ -242,7 +244,7 @@ public class JugarPartida extends JDialog {
 				
 			}
 		});
-		cancelButton.setBounds(692, 393, 123, 23);
+		cancelButton.setBounds(692, 378, 123, 38);
 		contentPanel.add(cancelButton);
 		cancelButton.setActionCommand("Cancel");
 		
@@ -312,9 +314,11 @@ public class JugarPartida extends JDialog {
 		lbDanno.setText(String.valueOf(personaje.getDanno()));
 		if(personaje.isMuerto()==true){
 			lbEstado.setText("Muerto");
+			lbEstado.setForeground(Color.RED);
 		}
 		else{
 			lbEstado.setText("Vivo");
+			lbEstado.setForeground(Color.BLACK);
 		}
 		asignarImagenPersonaje(personaje);
 
