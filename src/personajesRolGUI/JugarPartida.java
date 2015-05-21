@@ -28,6 +28,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 /**
  * Ventana en la que se realiza la acción del programa.
  * @author Pablo
@@ -70,6 +72,12 @@ public class JugarPartida extends JDialog {
 	 * @param personaje
 	 */
 	public JugarPartida(final Personaje personaje) {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				volverALista();
+			}
+		});
 		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\imagenes\\logoJuego.png"));
 		setTitle("Luchar");
 		setAlwaysOnTop(true);
@@ -119,12 +127,12 @@ public class JugarPartida extends JDialog {
 		panel.add(lblVida);
 
 		lbVida = new JLabel("");
-		lbVida.setFont(new Font("AvQest", Font.BOLD, 18));
+		lbVida.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbVida.setBounds(232, 81, 71, 25);
 		panel.add(lbVida);
 
 		lbAtrib = new JLabel("");
-		lbAtrib.setFont(new Font("AvQest", Font.BOLD, 18));
+		lbAtrib.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbAtrib.setBounds(243, 45, 164, 25);
 		panel.add(lbAtrib);
 
@@ -134,7 +142,7 @@ public class JugarPartida extends JDialog {
 		panel.add(lblDanno);
 
 		lbDanno = new JLabel("");
-		lbDanno.setFont(new Font("AvQest", Font.BOLD, 18));
+		lbDanno.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbDanno.setBounds(497, 45, 121, 25);
 		panel.add(lbDanno);
 
@@ -144,27 +152,27 @@ public class JugarPartida extends JDialog {
 		panel.add(lblArmadura);
 
 		lbArmadura = new JLabel("");
-		lbArmadura.setFont(new Font("AvQest", Font.BOLD, 18));
+		lbArmadura.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbArmadura.setBounds(540, 81, 78, 25);
 		panel.add(lbArmadura);
 
 		lblNivel = new JLabel("Nivel:");
-		lblNivel.setFont(new Font("AvQest", Font.BOLD, 22));
+		lblNivel.setFont(new Font("AvQest", Font.BOLD, 18));
 		lblNivel.setBounds(175, 11, 78, 23);
 		panel.add(lblNivel);
 
 		lbNivel = new JLabel("");
-		lbNivel.setFont(new Font("AvQest", Font.PLAIN, 23));
+		lbNivel.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbNivel.setBounds(263, 11, 109, 23);
 		panel.add(lbNivel);
 		
-		lblEstado = new JLabel("Estado");
+		lblEstado = new JLabel("Estado:");
 		lblEstado.setFont(new Font("AvQest", Font.BOLD, 18));
 		lblEstado.setBounds(432, 11, 87, 14);
 		panel.add(lblEstado);
 		
 		lbEstado = new JLabel("");
-		lbEstado.setFont(new Font("AvQest", Font.BOLD, 18));
+		lbEstado.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbEstado.setBounds(512, 11, 106, 14);
 		panel.add(lbEstado);
 
@@ -172,13 +180,13 @@ public class JugarPartida extends JDialog {
 		tabbedPane.addTab("Personaje", null, panel_1, null);
 		panel_1.setLayout(null);
 
-		lblNombre = new JLabel("Nombre");
+		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("AvQest", Font.BOLD, 18));
 		lblNombre.setBounds(183, 11, 90, 14);
 		panel_1.add(lblNombre);
 
 		lbNombre = new JLabel("");
-		lbNombre.setFont(new Font("AvQest", Font.BOLD, 18));
+		lbNombre.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbNombre.setBounds(264, 11, 149, 14);
 		panel_1.add(lbNombre);
 
@@ -193,7 +201,7 @@ public class JugarPartida extends JDialog {
 		panel_1.add(lblEdad);
 
 		lbEdad = new JLabel("");
-		lbEdad.setFont(new Font("AvQest", Font.BOLD, 18));
+		lbEdad.setFont(new Font("AvQest", Font.PLAIN, 18));
 		lbEdad.setBounds(259, 50, 154, 14);
 		panel_1.add(lbEdad);
 
@@ -238,10 +246,7 @@ public class JugarPartida extends JDialog {
 		cancelButton.setFont(new Font("AvQest", Font.PLAIN, 18));
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				listaPersonajes listapersonajes=new listaPersonajes(Gestion.taberna);
-				dispose();
-				listapersonajes.setVisible(true);
-				
+				volverALista();
 			}
 		});
 		cancelButton.setBounds(692, 378, 123, 38);
@@ -269,7 +274,15 @@ public class JugarPartida extends JDialog {
 
 		datosPersonaje(personaje);
 	}
-
+	/**
+	 * Crea la ventana listaPersonajes y cierra JugarPartida
+	 */
+	private void volverALista() {
+		listaPersonajes listapersonajes=new listaPersonajes(Gestion.taberna);
+		dispose();
+		listapersonajes.setVisible(true);
+	}
+	
 	/**
 	 * Comprueba los datos necesarios para hacer subir de nivel al personaje o bajarselo. Si consigues llegar a nivel máximo te felicita.
 	 * @param personaje Personaje con el que juegas

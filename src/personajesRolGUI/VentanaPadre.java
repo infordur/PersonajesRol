@@ -73,12 +73,12 @@ public class VentanaPadre extends JDialog {
 		contentPanel.add(tfNombre);
 		tfNombre.setColumns(10);
 		
-		lbNombre = new JLabel("Nombre");
+		lbNombre = new JLabel("Nombre:");
 		lbNombre.setForeground(Color.WHITE);
 		lbNombre.setBounds(290, 11, 146, 20);
 		contentPanel.add(lbNombre);
 		
-		lbEdad = new JLabel("Edad");
+		lbEdad = new JLabel("Edad:");
 		lbEdad.setForeground(Color.WHITE);
 		lbEdad.setBounds(290, 43, 81, 20);
 		contentPanel.add(lbEdad);
@@ -121,7 +121,7 @@ public class VentanaPadre extends JDialog {
 		spEdad.setBounds(348, 42, 49, 20);
 		contentPanel.add(spEdad);
 		
-		lblDescripcin = new JLabel("Descripci\u00F3n");
+		lblDescripcin = new JLabel("Descripci\u00F3n:");
 		lblDescripcin.setForeground(Color.WHITE);
 		lblDescripcin.setBounds(290, 176, 91, 20);
 		contentPanel.add(lblDescripcin);

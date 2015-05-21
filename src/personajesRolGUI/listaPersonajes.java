@@ -76,6 +76,9 @@ public class listaPersonajes extends VentanaPadre {
 	 */
 	public listaPersonajes(final Taberna taberna) {
 		super();
+		lblDescripcin.setText("Descripci\u00F3n:");
+		lbEdad.setText("Edad:");
+		lbNombre.setText("Nombre:");
 		lbFondoMadera.setText("");
 		lbFondoMadera.setVisible(false);
 		radioArquero.setForeground(new Color(255, 255, 255));
@@ -96,14 +99,14 @@ public class listaPersonajes extends VentanaPadre {
 		tfNombre.setEditable(false);
 		this.setSize(780, 460);
 		this.taberna = taberna;
-		lblDescripcin.setBounds(502, 225, 91, 20);
+		lblDescripcin.setBounds(502, 231, 91, 20);
 		spEdad.setBounds(555, 66, 49, 20);
 		tADescripcion.setBounds(502, 261, 251, 118);
 		panel.setBounds(502, 122, 169, 98);
 		lbEdad.setBounds(502, 66, 81, 20);
 		lbNombre.setBounds(502, 26, 146, 20);
 		tfNombre.setBounds(555, 26, 198, 20);
-		lbImagen.setBounds(278, 26, 169, 219);
+		lbImagen.setBounds(296, 26, 169, 219);
 		
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

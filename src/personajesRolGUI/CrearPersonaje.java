@@ -38,6 +38,7 @@ public class CrearPersonaje extends VentanaPadre {
 	 */
 	public CrearPersonaje(final Taberna taberna) {
 		super();
+		lbImagen.setBounds(33, 11, 228, 297);
 		lbFondoMadera.setText("");
 		tfNombre.setBounds(348, 11, 193, 20);
 		radioArquero.addMouseListener(new MouseAdapter() {
@@ -78,6 +79,7 @@ public class CrearPersonaje extends VentanaPadre {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					taberna.annadir(tfNombre.getText(),spEdad.getValue().toString() , tADescripcion.getText() , getAtributo());
+					resetearDatos();
 					JOptionPane.showMessageDialog(contentPanel,"Tu personaje está esperando en la taberna", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 				} catch (NombreInvalidoException | EdadInvalidaException | PersonajeYaExisteException e1) {
 					JOptionPane.showMessageDialog(contentPanel, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -86,6 +88,16 @@ public class CrearPersonaje extends VentanaPadre {
 		});
 		cancelButton.setText("Cancelar");
 		okButton.setText("Crear");
+	}
+	
+	
+	private void resetearDatos(){
+		tfNombre.setText(null);
+		spEdad.setValue(18);
+		tADescripcion.setText(null);
+		radioArquero.setSelected(false);
+		radioGuerrero.setSelected(false);
+		radioMago.setSelected(false);
 	}
 	
 	/**
