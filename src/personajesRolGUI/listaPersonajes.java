@@ -51,7 +51,7 @@ import java.util.Date;
  * @author Pablo Durán
  *
  */
-public class listaPersonajes extends VentanaPadre {
+public class ListaPersonajes extends VentanaPadre {
 
 	private DefaultListModel modelo = new DefaultListModel();
 	private String personaje;
@@ -74,7 +74,7 @@ public class listaPersonajes extends VentanaPadre {
 	 * 
 	 * @param taberna
 	 */
-	public listaPersonajes(final Taberna taberna) {
+	public ListaPersonajes(final Taberna taberna) {
 		super();
 		lblDescripcin.setText("Descripci\u00F3n:");
 		lbEdad.setText("Edad:");
@@ -315,7 +315,6 @@ public class listaPersonajes extends VentanaPadre {
 
 	/**
 	 * Desactiva el botón jugar si no hay personajes
-	 * @param taberna
 	 */
 	private void comprobarBtJugar() {
 		if(Gestion.taberna.size()==0)

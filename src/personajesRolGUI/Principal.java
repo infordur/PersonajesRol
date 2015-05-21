@@ -43,7 +43,7 @@ public class Principal {
 
 	private JFrame frmSintitulo;
 	private CrearPersonaje nuevoPj;
-	private listaPersonajes miTaberna;
+	private ListaPersonajes miTaberna;
 	private JFileChooser guardarComoFile;
 	private Filtro filtro = new Filtro(".rol", "Archivo de rol");
 	private VerAyuda verAyuda= new VerAyuda();
@@ -254,7 +254,7 @@ public class Principal {
 	 */
 	protected void miTaberna() throws TabernaVaciaException {
 		if (Gestion.taberna.size() != 0) {
-			miTaberna = new listaPersonajes(Gestion.taberna);
+			miTaberna = new ListaPersonajes(Gestion.taberna);
 			miTaberna.setVisible(true);
 		} else {
 			throw new TabernaVaciaException("No hay personajes en la Taberna");

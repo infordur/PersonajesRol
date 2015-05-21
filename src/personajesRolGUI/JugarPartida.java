@@ -278,7 +278,7 @@ public class JugarPartida extends JDialog {
 	 * Crea la ventana listaPersonajes y cierra JugarPartida
 	 */
 	private void volverALista() {
-		listaPersonajes listapersonajes=new listaPersonajes(Gestion.taberna);
+		ListaPersonajes listapersonajes=new ListaPersonajes(Gestion.taberna);
 		dispose();
 		listapersonajes.setVisible(true);
 	}
@@ -307,7 +307,7 @@ public class JugarPartida extends JDialog {
 			if(personaje.getNivel()==20){
 				JOptionPane.showMessageDialog(contentPanel, "Felicidades. Has llegado a nivel máximo",
 						"Felicidades", JOptionPane.INFORMATION_MESSAGE);
-				listaPersonajes listapersonajes=new listaPersonajes(Gestion.taberna);
+				ListaPersonajes listapersonajes=new ListaPersonajes(Gestion.taberna);
 				dispose();
 				listapersonajes.setVisible(true);
 			}
