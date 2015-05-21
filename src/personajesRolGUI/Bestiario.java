@@ -119,16 +119,10 @@ public class Bestiario extends VentanaPadre {
 		} else {
 			btnSiguiente.setEnabled(true);
 		}
-//		if (Gestion.cueva.get(indiceMonstruos) == null) {
-//			okButton.setEnabled(false);
-//		} else {
-//			okButton.setEnabled(true);
-//		}
 	}
 	
 	/**
 	 * Comprueba los botones en caso de que no haya personajes. Si hay algún personaje selecciona el primer personaje
-	 * @param taberna ArrayList de personajes
 	 */
 	private void cargarPrimerMonstruo() {
 		comprobarBoton();

@@ -249,9 +249,10 @@ public class JugarPartida extends JDialog {
 		cancelButton.setActionCommand("Cancel");
 		
 		lbNombrePj = new JLabel("");
+		lbNombrePj.setHorizontalAlignment(SwingConstants.CENTER);
 		lbNombrePj.setForeground(new Color(255, 255, 255));
 		lbNombrePj.setFont(new Font("AvQest", Font.BOLD, 18));
-		lbNombrePj.setBounds(150, 11, 252, 14);
+		lbNombrePj.setBounds(60, 11, 338, 14);
 		contentPanel.add(lbNombrePj);
 
 		lbMonstruo = new JLabel("");

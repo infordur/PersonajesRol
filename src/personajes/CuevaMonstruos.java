@@ -20,7 +20,6 @@ public class CuevaMonstruos {
 
 	/**
 	 * Añade unos cuantos monstruos a la lista
-	 * @return lista de monstruos rellena
 	 */
 	public void generarMonstruos(){
 		cueva.add(new Monstruo("Goblin", (int)(Math.random()*2+1),  "src\\imagenes\\goblin.jpg"));

@@ -19,6 +19,7 @@ import personajes.Personaje;
 import personajes.PersonajeMuertoException;
 import personajes.PersonajeNoExisteException;
 import personajes.Taberna;
+import utiles.Gestion;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -107,6 +108,7 @@ public class listaPersonajes extends VentanaPadre {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				eliminarPersonaje(taberna);
+				comprobarBtJugar();
 			}
 			
 			/**
@@ -247,14 +249,13 @@ public class listaPersonajes extends VentanaPadre {
 				scroll.setSize(198, 198);
 				scroll.setPreferredSize(new Dimension(200,300));
 				contentPanel.add(scroll, BorderLayout.CENTER);
-//				contentPanel.add(listPjs);
 		btnJugar.setBounds(43, 210, 198, 35);
 		contentPanel.add(btnJugar);
 
-		comprobarBtJugar(taberna); // comprueba que haya personajes en la
+		comprobarBtJugar(); // comprueba que haya personajes en la
 									// taberna para poder jugar.
 
-		JLabel lblFechaCreacion = new JLabel("Fecha Creaci\u00F3n");
+		JLabel lblFechaCreacion = new JLabel("Fecha Creaci\u00F3n:");
 		lblFechaCreacion.setForeground(new Color(255, 255, 255));
 		lblFechaCreacion.setBounds(502, 97, 102, 14);
 		contentPanel.add(lblFechaCreacion);
@@ -270,6 +271,7 @@ public class listaPersonajes extends VentanaPadre {
 		contentPanel.add(lbFondoTaberna);
 
 		cargarPrimerPersonaje(taberna);
+		
 	}
 
 	/**
@@ -312,9 +314,11 @@ public class listaPersonajes extends VentanaPadre {
 	 * Desactiva el botón jugar si no hay personajes
 	 * @param taberna
 	 */
-	private void comprobarBtJugar(final Taberna taberna) {
-		if (taberna.size() == 0) {
+	private void comprobarBtJugar() {
+		if(Gestion.taberna.size()==0)
 			btnJugar.setEnabled(false);
+		else{
+			btnJugar.setEnabled(true);
 		}
 	}
 
@@ -376,6 +380,7 @@ public class listaPersonajes extends VentanaPadre {
 	 * @throws LosMuertosNoLuchanException
 	 */
 	private void jugar() throws LosMuertosNoLuchanException {
+		
 		if(taberna.get(listPjs.getSelectedIndex()).getNivel()==20){
 			JOptionPane.showMessageDialog(contentPanel, "Tu personaje ya está a nivel máximo");
 			return;

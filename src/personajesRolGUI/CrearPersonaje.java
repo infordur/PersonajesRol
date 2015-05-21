@@ -38,6 +38,8 @@ public class CrearPersonaje extends VentanaPadre {
 	 */
 	public CrearPersonaje(final Taberna taberna) {
 		super();
+		lbFondoMadera.setText("");
+		tfNombre.setBounds(348, 11, 193, 20);
 		radioArquero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -61,6 +63,14 @@ public class CrearPersonaje extends VentanaPadre {
 		radioGuerrero.setSelected(true);
 		lbImagen.setIcon(new ImageIcon("src\\imagenes\\guerrero.jpg"));
 		tfNombre.setColumns(25);
+		
+		JLabel lbletras = new JLabel("New label");
+		lbletras.setBounds(495, 14, 46, 14);
+		contentPanel.add(lbletras);
+		
+		JLabel label = new JLabel("New label");
+		label.setBounds(504, 14, 46, 14);
+		contentPanel.add(label);
 					
 		
 		setModal(true);

@@ -69,7 +69,7 @@ public class VentanaPadre extends JDialog {
 		contentPanel.add(lbImagen);
 		
 		tfNombre = new JTextField();
-		tfNombre.setBounds(348, 11, 146, 20);
+		tfNombre.setBounds(348, 11, 193, 20);
 		contentPanel.add(tfNombre);
 		tfNombre.setColumns(10);
 		
@@ -126,7 +126,7 @@ public class VentanaPadre extends JDialog {
 		lblDescripcin.setBounds(290, 176, 91, 20);
 		contentPanel.add(lblDescripcin);
 		
-		lbFondoMadera = new JLabel("New label");
+		lbFondoMadera = new JLabel("");
 		lbFondoMadera.setIcon(new ImageIcon("src\\imagenes\\madera.jpg"));
 		lbFondoMadera.setBounds(0, 0, 563, 353);
 		contentPanel.add(lbFondoMadera);
