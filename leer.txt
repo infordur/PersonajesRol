@@ -1,0 +1,2 @@
+Antes de ejecutar el programa hay que instalar la fuente que usa, se encuentra en la carpeta "Font".
+También se incluye un archivo adjunto(prueba.rol) con 3 personajes ya creados.
