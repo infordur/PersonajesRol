@@ -20,70 +20,16 @@ public class Arquero extends Personaje implements Serializable{
 	public Arquero(String nombre, String edad, String descripcion)
 			throws NombreInvalidoException, EdadInvalidaException {
 		super(nombre, edad, descripcion);
-		calcularVida();
-		calcularDanno();
-		calcularArmadura();
 		setAtributo(Atributos.DESTREZA);
-	}
-
-	/**
-	 * Define la vida inicial del arquero
-	 */
-	@Override
-	public void calcularVida() {
-		vida = vida + 100;
-
-	}
-
-	/**
-	 * Define el danno inicial del arquero
-	 */
-	@Override
-	public void calcularDanno() {
-		danno = danno + 15;
-
-	}
-
-	/**
-	 * Define la armadura inicial del arquero
-	 */
-	@Override
-	public void calcularArmadura() {
-		armadura = armadura + 5;
-
-	}
-
-	/**
-	 * Incrementa el nivel del arquero y modifica sus estadísticas al alza
-	 */
-	@Override
-	public void subirNivel() throws PersonajeMuertoException {
-		if (muerto == false) {
-			nivel = ++nivel;
-			if (atributo == Atributos.DESTREZA) {
-				vida = (int) (vida * 1.3);
-				danno = (int) (danno * 1.3);
-				armadura = (int) (armadura * 1.3);
-			}
-		}
-	}
-
-	/**
-	 * Decrementa el nivel del arquero y modifica sus estadísticas a la baja
-	 */
-	@Override
-	public void bajarNivel(){
-		if(nivel-1<=0){
-			muerto=true;
-		}
-		else{
-			nivel=--nivel;
-			if (atributo == Atributos.DESTREZA) {
-				vida = (int) (vida /1.3);
-				danno = (int) (danno/1.3);
-				armadura = (int) (armadura/1.3);
-			}
-		}
+		incDanno=15;
+		incVida=100;
+		incArmadura=5;
+		snVida=1.3f;
+		snArmadura=1.3f;
+		snDanno=1.3f;
+		calcularVida(incVida);
+		calcularDanno(incDanno);
+		calcularArmadura(incArmadura);
 	}
 
 }

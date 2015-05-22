@@ -20,71 +20,15 @@ public class Guerrero extends Personaje implements Serializable{
 	public Guerrero(String nombre, String edad, String descripcion)
 			throws NombreInvalidoException, EdadInvalidaException {
 		super(nombre, edad, descripcion);
-		calcularVida();
-		calcularArmadura();
-		calcularDanno();
 		setAtributo(Atributos.FUERZA);
+		incVida=200;
+		incDanno=10;
+		incArmadura=10;
+		snVida=1.35f;
+		snArmadura=1.35f;
+		snDanno=1.3f;
+		calcularVida(incVida);
+		calcularDanno(incDanno);
+		calcularArmadura(incArmadura);
 	}
-
-	/**
-	 * Define la vida inicial del Guerrero
-	 */
-	@Override
-	public void calcularVida() {
-		vida = vida + 200;
-	}
-
-	/**
-	 * Define el daño inicial del Guerrero
-	 */
-	@Override
-	public void calcularDanno() {
-		danno = danno + 10;
-	}
-
-	/**
-	 * Define la armadura inicial del Guerrero
-	 */
-	@Override
-	public void calcularArmadura() {
-		armadura = armadura + 10;
-	}
-
-	/**
-	 * Incrementa el nivel del guerrero y modifica sus estadísticas al alza
-	 */
-	@Override
-	public void subirNivel() throws PersonajeMuertoException {
-		if (muerto == false) {
-			nivel = ++nivel;
-			if(atributo==Atributos.FUERZA){
-				danno=(int) (danno*1.3);
-				vida=(int) (vida*1.35);
-				armadura=(int) (armadura*1.35);
-			}
-		}
-		else{
-			throw new PersonajeMuertoException("Tu personaje está descansando en los cielos");
-		}
-	}
-
-	/**
-	 * Decrementa el nivel del guerrero y modifica sus estadísticas a la baja
-	 */
-	@Override
-	public void bajarNivel(){
-		if(nivel-1<=0){
-			muerto=true;
-		}
-		else{
-			nivel=--nivel;
-			if(atributo==Atributos.FUERZA){
-				danno=(int) (danno/1.3);
-				vida=(int) (vida/1.4);
-				armadura=(int) (armadura/1.4);
-			}
-		}
-	}
-
-
 }

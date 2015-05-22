@@ -128,12 +128,12 @@ public class JugarPartida extends JDialog {
 
 		lbVida = new JLabel("");
 		lbVida.setFont(new Font("AvQest", Font.PLAIN, 18));
-		lbVida.setBounds(232, 81, 71, 25);
+		lbVida.setBounds(248, 81, 71, 25);
 		panel.add(lbVida);
 
 		lbAtrib = new JLabel("");
 		lbAtrib.setFont(new Font("AvQest", Font.PLAIN, 18));
-		lbAtrib.setBounds(243, 45, 164, 25);
+		lbAtrib.setBounds(248, 45, 164, 25);
 		panel.add(lbAtrib);
 
 		lblDanno = new JLabel("Da\u00F1o:");
@@ -143,17 +143,17 @@ public class JugarPartida extends JDialog {
 
 		lbDanno = new JLabel("");
 		lbDanno.setFont(new Font("AvQest", Font.PLAIN, 18));
-		lbDanno.setBounds(497, 45, 121, 25);
+		lbDanno.setBounds(510, 45, 121, 25);
 		panel.add(lbDanno);
 
 		lblArmadura = new JLabel("Armadura:");
 		lblArmadura.setFont(new Font("AvQest", Font.BOLD, 18));
-		lblArmadura.setBounds(432, 81, 109, 25);
+		lblArmadura.setBounds(401, 81, 109, 25);
 		panel.add(lblArmadura);
 
 		lbArmadura = new JLabel("");
 		lbArmadura.setFont(new Font("AvQest", Font.PLAIN, 18));
-		lbArmadura.setBounds(540, 81, 78, 25);
+		lbArmadura.setBounds(510, 81, 78, 25);
 		panel.add(lbArmadura);
 
 		lblNivel = new JLabel("Nivel:");
@@ -163,17 +163,17 @@ public class JugarPartida extends JDialog {
 
 		lbNivel = new JLabel("");
 		lbNivel.setFont(new Font("AvQest", Font.PLAIN, 18));
-		lbNivel.setBounds(263, 11, 109, 23);
+		lbNivel.setBounds(248, 11, 109, 23);
 		panel.add(lbNivel);
 		
 		lblEstado = new JLabel("Estado:");
 		lblEstado.setFont(new Font("AvQest", Font.BOLD, 18));
-		lblEstado.setBounds(432, 11, 87, 14);
+		lblEstado.setBounds(423, 11, 87, 14);
 		panel.add(lblEstado);
 		
 		lbEstado = new JLabel("");
 		lbEstado.setFont(new Font("AvQest", Font.PLAIN, 18));
-		lbEstado.setBounds(512, 11, 106, 14);
+		lbEstado.setBounds(510, 11, 106, 14);
 		panel.add(lbEstado);
 
 		JPanel panel_1 = new JPanel();
@@ -187,7 +187,7 @@ public class JugarPartida extends JDialog {
 
 		lbNombre = new JLabel("");
 		lbNombre.setFont(new Font("AvQest", Font.PLAIN, 18));
-		lbNombre.setBounds(264, 11, 149, 14);
+		lbNombre.setBounds(259, 11, 154, 14);
 		panel_1.add(lbNombre);
 
 		tADescripcion = new TextArea();

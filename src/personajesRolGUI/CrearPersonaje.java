@@ -38,27 +38,29 @@ public class CrearPersonaje extends VentanaPadre {
 	 */
 	public CrearPersonaje(final Taberna taberna) {
 		super();
-		lbImagen.setBounds(33, 11, 228, 297);
-		lbFondoMadera.setText("");
-		tfNombre.setBounds(348, 11, 193, 20);
-		radioArquero.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		radioArquero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				lbImagen.setIcon(new ImageIcon("src\\imagenes\\arquera.jpg"));
 			}
 		});
-		radioMago.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		radioMago.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				lbImagen.setIcon(new ImageIcon("src\\imagenes\\mago.jpg"));
 			}
 		});
-		radioGuerrero.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		radioGuerrero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				lbImagen.setIcon(new ImageIcon("src\\imagenes\\guerrero.jpg"));
 			}
 		});
+		spEdad.setLocation(348, 42);
+		lblDescripcin.setLocation(290, 176);
+		tADescripcion.setLocation(290, 202);
+		panel.setLocation(290, 72);
+		lbEdad.setLocation(290, 43);
+		lbImagen.setBounds(33, 11, 228, 297);
+		lbFondoMadera.setText("");
+		tfNombre.setBounds(348, 11, 193, 20);
 		setResizable(false);
 		setTitle("Crear Personaje");
 		radioGuerrero.setSelected(true);
@@ -82,7 +84,7 @@ public class CrearPersonaje extends VentanaPadre {
 					resetearDatos();
 					JOptionPane.showMessageDialog(contentPanel,"Tu personaje está esperando en la taberna", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 				} catch (NombreInvalidoException | EdadInvalidaException | PersonajeYaExisteException e1) {
-					JOptionPane.showMessageDialog(contentPanel, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(contentPanel, e1.getMessage()+". \n4-25 letras y empezar por mayúscula.\nejemplo: Grazler", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

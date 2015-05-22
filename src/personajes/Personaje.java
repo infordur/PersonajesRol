@@ -10,23 +10,161 @@ import java.util.regex.Pattern;
  * @author Pablo Durán
  *
  */
-public abstract class Personaje implements Roleable, Serializable {
+public class Personaje implements Roleable, Serializable {
+	/**
+	 * Nombre del personaje
+	 */
 	private String nombre;
+	/**
+	 * Edad del personaje
+	 */
 	private String edad;
+	/**
+	 * Descripción sobre el personaje
+	 */
 	private String descripcion;
+	/**
+	 * Vida del personaje
+	 */
 	protected int vida = 100;
+	/**
+	 * Daño del personaje
+	 */
 	protected int danno = 5;
+	/**
+	 * Armadura del personaje
+	 */
 	protected int armadura = 2;
+	/**
+	 * Atributo del personaje
+	 */
 	protected Atributos atributo;
+	/**
+	 * Nivel del personaje
+	 */
 	protected int nivel = 1;
+	/**
+	 * Estado del personaje
+	 */
 	protected boolean muerto=false;
+	/**
+	 * Fecha de creación del personaje
+	 */
 	private Date fechaCreacion = new Date();
+	/**
+	 * Incremento de daño del personaje
+	 */
+	protected int incDanno;
+	/**
+	 * Incremento de armadura del personaje
+	 */
+	protected int incArmadura;
+	/**
+	 * Incremento de vida del personaje
+	 */
+	protected int incVida;
+	/**
+	 * Incremento de daño al subir de nivel el personaje
+	 */
+	protected float snDanno;
+	/**
+	 * Incremento de armadura al subir de nivel el personaje
+	 */
+	protected float snArmadura;
+	/**
+	 * Incremento de vida al subir de nivel el personaje
+	 */
+	protected float snVida;
 
+	/**
+	 * Patrón para el nombre
+	 */
 	private static final Pattern PATTERN_NOMBRE = Pattern
 			.compile("^[A-Z][a-z]{3,25}$");
+	/**
+	 * Patrón para la edad
+	 */
 	private static final Pattern PATTERN_EDAD = Pattern
 			.compile("^[1-9]|[1-9][\\d]|1[0-2][\\d]$");
 
+
+	/**
+	 * Constructor de personaje
+	 * @param nombre Nombre del personaje
+	 * @param edad Edad del personaje
+	 * @param descripcion Descripción del personaje
+	 * @throws NombreInvalidoException Salta al introducir un nombre inválido
+	 * @throws EdadInvalidaException Salta al introducir una edad inválida
+	 */
+	public Personaje(String nombre, String edad, String descripcion)
+			throws NombreInvalidoException, EdadInvalidaException {
+		super();
+		setNombre(nombre);
+		setEdad(edad);
+		setDescripcion(descripcion);
+		calcularVida(incVida);
+		setNivel(nivel);
+		setAtributo(atributo);
+	}
+	
+	
+	/**
+	 * Define la vida inicial del arquero
+	 */
+	@Override
+	public void calcularVida(int incVida) {
+		vida = vida + incVida;
+	}
+
+	/**
+	 * Define el danno inicial del arquero
+	 */
+	@Override
+	public void calcularDanno(int incDanno) {
+		danno = danno + incDanno;
+
+	}
+
+	/**
+	 * Define la armadura inicial del arquero
+	 */
+	@Override
+	public void calcularArmadura(int incArmadura) {
+		armadura = armadura + incArmadura;
+
+	}
+	
+	/**
+	 * Incrementa el nivel del arquero y modifica sus estadísticas al alza
+	 */
+	@Override
+	public void subirNivel() throws PersonajeMuertoException {
+		if (muerto == false) {
+			++nivel;
+				vida = (int) (vida * snVida);
+				danno = (int) (danno * snDanno);
+				armadura = (int) (armadura * snArmadura);
+		}
+	}
+
+	/**
+	 * Decrementa el nivel del arquero y modifica sus estadísticas a la baja
+	 */
+	@Override
+	public void bajarNivel(){
+		if(nivel-1<=0){
+			muerto=true;
+		}
+		else{
+			--nivel;
+			if (atributo == Atributos.DESTREZA) {
+				vida = (int) (vida /snVida);
+				danno = (int) (danno/snDanno);
+				armadura = (int) (armadura/snArmadura);
+			}
+		}
+	}
+	
 	
 	/**
 	 * Getter de vida
@@ -66,27 +204,6 @@ public abstract class Personaje implements Roleable, Serializable {
 	 */
 	private void setMuerto(boolean muerto) {
 		this.muerto = muerto;
-	}
-
-	/**
-	 * Constructor de personaje
-	 * @param nombre Nombre del personaje
-	 * @param edad Edad del personaje
-	 * @param descripcion Descripción del personaje
-	 * @throws NombreInvalidoException Salta al introducir un nombre inválido
-	 * @throws EdadInvalidaException Salta al introducir una edad inválida
-	 */
-	public Personaje(String nombre, String edad, String descripcion)
-			throws NombreInvalidoException, EdadInvalidaException {
-		super();
-		setNombre(nombre);
-		setEdad(edad);
-		setDescripcion(descripcion);
-		setVida(vida);
-		setArmadura(armadura);
-		setFechaCreacion(fechaCreacion);
-		setNivel(nivel);
-		setAtributo(atributo);
 	}
 	
 	

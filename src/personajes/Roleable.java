@@ -8,15 +8,15 @@ public interface Roleable {
 	/**
 	 * Calcula la vida del personaje
 	 */
-	void calcularVida();
+	void calcularVida(int vida);
 	/**
 	 * Calcula el daño del personaje
 	 */
-	void calcularDanno();
+	void calcularDanno(int danno);
 	/**
 	 * Calcula la armadura del personaje
 	 */
-	void calcularArmadura();
+	void calcularArmadura(int armadura);
 	/**
 	 * Sube de nivel al personaje y aumenta sus estadísticas
 	 * @throws PersonajeMuertoException Salta al intentar subir de nivel a un personaje muerto
