@@ -373,6 +373,8 @@ public class Principal {
 						break;
 					case JOptionPane.NO_OPTION:
 						break;
+					case JOptionPane.CANCEL_OPTION:
+						return;
 					}
 				} else {
 					Gestion.guardarComo(Gestion.taberna, Gestion.archivo);
