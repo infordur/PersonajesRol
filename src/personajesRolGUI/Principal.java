@@ -36,7 +36,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 /**
  * Ventana principal que ejecuta el programa
- * @author Pablo Durán
+ * @author Pablo DurÃ¡n
  *
  */
 public class Principal {
@@ -195,7 +195,7 @@ public class Principal {
 					miTaberna();
 				} catch (TabernaVaciaException e1) {
 					JOptionPane.showMessageDialog(null, e1.getMessage(),
-							"Taberna Vacía", JOptionPane.INFORMATION_MESSAGE);
+							"Taberna VacÃ­a", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -229,8 +229,8 @@ public class Principal {
 	protected void cerrarVentana() {
 		if (Gestion.isModificado() == true) {
 			int opcion = JOptionPane.showOptionDialog(null,
-					"No has guardado, ¿Desea Guardar?",
-					"¿Desea Guardar?",
+					"No has guardado, Â¿Desea Guardar?",
+					"Â¿Desea Guardar?",
 					JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, null, null);
 			switch (opcion) {
@@ -301,12 +301,12 @@ public class Principal {
 		bestiario.setVisible(true);
 	}
 	/**
-	 * Implementa la función de abrir un archivo
+	 * Implementa la funciÃ³n de abrir un archivo
 	 */
 	private void abrirFichero() {
 		if (Gestion.isModificado()) {
 			int opcion = JOptionPane.showConfirmDialog(null,
-					"No has guardado. ¿Desea guardar?", "Salir",
+					"No has guardado. Â¿Desea guardar?", "Salir",
 					JOptionPane.YES_NO_CANCEL_OPTION);
 			switch (opcion) {
 			case JOptionPane.YES_OPTION:
@@ -338,7 +338,7 @@ public class Principal {
 				Gestion.setModificado(false);
 				frmSintitulo.setTitle("FateWars - "+Gestion.archivo.getName());
 			} catch (ClassNotFoundException | IOException ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage(), "Error",
+				JOptionPane.showMessageDialog(null, "No se puede abrir el archivo especificado", "Error",
 						JOptionPane.ERROR_MESSAGE);
 				Gestion.setArchivo("FateWars - Sin_titulo");
 			}
@@ -362,7 +362,7 @@ public class Principal {
 					int opcion = JOptionPane
 							.showOptionDialog(
 									null,
-									"¿Esta seguro de que desea sobreescribir el archivo?",
+									"Â¿Esta seguro de que desea sobreescribir el archivo?",
 									"Verificar",
 									JOptionPane.YES_NO_CANCEL_OPTION,
 									JOptionPane.QUESTION_MESSAGE, null, null,
@@ -386,7 +386,7 @@ public class Principal {
 	}
 
 	/**
-	 * Implementa la función Guardar
+	 * Implementa la funciÃ³n Guardar
 	 */
 	private void guardar() {
 		if (Gestion.archivo.getName().equalsIgnoreCase("FateWars - Sin_titulo")) {
@@ -405,14 +405,14 @@ public class Principal {
 	 * Crea una nueva Taberna, en caso de que la taberna haya sido
 	 * modificado sin guardarse anteriormente muestra una ventana que pregunta
 	 * si deseas guardar. Si la respuesta es si, invoca a guardarComo() que pide
-	 * un nombre y crea un archivo con la información. En caso de que la
+	 * un nombre y crea un archivo con la informaciÃ³n. En caso de que la
 	 * respuesta sea no mantiene los cambios hechos
 	 * 
 	 */
 	public void nuevoArchivo() {
 		if (Gestion.isModificado()) {
 			int opcion = JOptionPane.showOptionDialog(null,
-					"No has guardado, ¿Desea Guardar?", "¿Desea Guardar?",
+					"No has guardado, Â¿Desea Guardar?", "Â¿Desea Guardar?",
 					JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, null, null);
 			switch (opcion) {
