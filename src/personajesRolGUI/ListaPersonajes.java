@@ -47,8 +47,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 /**
- * Lista de personajes donde puedes entrar a luchar o eliminarlos, adem·s de moverte entre los distintos personajes.
- * @author Pablo Dur·n
+ * Lista de personajes donde puedes entrar a luchar o eliminarlos, adem√°s de moverte entre los distintos personajes.
+ * @author Pablo Dur√°n
  *
  */
 public class ListaPersonajes extends VentanaPadre {
@@ -125,7 +125,7 @@ public class ListaPersonajes extends VentanaPadre {
 					int opcion = JOptionPane
 							.showConfirmDialog(contentPanel,
 									"Vas a eliminar a " + personaje
-											+ " øEst·s seguro?", "Eliminar",
+											+ " ¬øEst√°s seguro?", "Eliminar",
 									JOptionPane.YES_NO_OPTION);
 					switch (opcion) {
 					case JOptionPane.YES_OPTION:
@@ -278,7 +278,7 @@ public class ListaPersonajes extends VentanaPadre {
 	}
 
 	/**
-	 * Comprueba los botones en caso de que no haya personajes. Si hay alg˙n personaje selecciona el primer personaje
+	 * Comprueba los botones en caso de que no haya personajes. Si hay alg√∫n personaje selecciona el primer personaje
 	 * @param taberna ArrayList de personajes
 	 */
 	private void cargarPrimerPersonaje(final Taberna taberna) {
@@ -314,7 +314,7 @@ public class ListaPersonajes extends VentanaPadre {
 	}
 
 	/**
-	 * Desactiva el botÛn jugar si no hay personajes
+	 * Desactiva el bot√≥n jugar si no hay personajes
 	 */
 	private void comprobarBtJugar() {
 		if(Gestion.taberna.size()==0)
@@ -384,7 +384,7 @@ public class ListaPersonajes extends VentanaPadre {
 	private void jugar() throws LosMuertosNoLuchanException {
 		
 		if(taberna.get(listPjs.getSelectedIndex()).getNivel()==20){
-			JOptionPane.showMessageDialog(contentPanel, "Tu personaje ya est· a nivel m·ximo");
+			JOptionPane.showMessageDialog(contentPanel, "Tu personaje ya est√° a nivel m√°ximo");
 			return;
 		}
 		if (taberna.get(listPjs.getSelectedIndex()).isMuerto() == false) {
@@ -398,8 +398,8 @@ public class ListaPersonajes extends VentanaPadre {
 	}
 
 	/**
-	 * Comprueba el botÛn eliminar.
-	 * Los desactiva si no hay m·s personajes y los activa en caso contrario.
+	 * Comprueba el bot√≥n eliminar.
+	 * Los desactiva si no hay m√°s personajes y los activa en caso contrario.
 	 */
 	private void comprobarBoton() {
 		if (taberna.get(indicePersonajes) == null) {
